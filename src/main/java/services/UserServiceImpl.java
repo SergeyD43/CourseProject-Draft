@@ -8,6 +8,7 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
+
     private static UserDAO userDAO = new UserDAOImpl();
 
     @Override
@@ -33,5 +34,8 @@ public class UserServiceImpl implements UserService {
     public List<User> getAllUsers() {
         List<User> users = userDAO.selectAllUsers();
         return users;
+    }
+
+    public void setUserDAO(String userDAO) {
     }
 }

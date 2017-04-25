@@ -13,7 +13,15 @@ import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
 
+//    @Autowired
     private static UserService userService = new UserServiceImpl();
+
+//    @Override
+//    public void init(ServletConfig config) throws ServletException {
+//        super.init(config);
+//        SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,
+//                config.getServletContext());
+//    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

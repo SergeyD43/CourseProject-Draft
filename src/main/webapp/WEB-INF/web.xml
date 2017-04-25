@@ -10,12 +10,20 @@
   </welcome-file-list>
 
   <filter>
-    <filter-name>WhiteFilter</filter-name>
-    <filter-class>controllers.filters.WhiteList</filter-class>
-  </filter>
+  <filter-name>WhiteFilter</filter-name>
+  <filter-class>controllers.filters.WhiteList</filter-class>
+</filter>
   <filter-mapping>
     <filter-name>WhiteFilter</filter-name>
     <url-pattern>/main</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>AdminFilter</filter-name>
+    <filter-class>controllers.filters.AdminList</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AdminFilter</filter-name>
+    <url-pattern>/adminmain</url-pattern>
   </filter-mapping>
 
   <servlet>

@@ -4,6 +4,7 @@ import model.pojo.User;
 import services.UserService;
 import services.UserServiceImpl;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,17 +23,21 @@ public class AdminServlet extends HttpServlet {
 
         List<User> users = userService.getAllUsers();
 
-        req.setAttribute("users", users);
+        for (User item:users) {
+            System.out.println(item);
+        }
 
+        req.setAttribute("users2", users);
 
-        getServletContext().getRequestDispatcher("/adminmain.jsp")
-                .forward(req, resp);
-//        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/adminmain.jsp");
-//        dispatcher.forward(req, resp);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/adminmain.jsp");
+        dispatcher.forward(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
-
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if(req.getParameter("exit")!=null){
+            req.getSession().invalidate();
+            resp.sendRedirect(req.getContextPath() + "/login");
+        }
     }
 }
