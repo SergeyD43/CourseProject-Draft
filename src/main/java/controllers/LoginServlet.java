@@ -15,7 +15,7 @@ public class LoginServlet extends HttpServlet {
 
 //    @Autowired
     private static UserService userService = new UserServiceImpl();
-
+//
 //    @Override
 //    public void init(ServletConfig config) throws ServletException {
 //        super.init(config);

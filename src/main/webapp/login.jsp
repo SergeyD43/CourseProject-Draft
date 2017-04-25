@@ -52,12 +52,12 @@
 <div class="container">
 
     <form method ="post" action="/login" class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
+        <h2 class="my-title form-signin-heading">Авторизация</h2>
         <label for="login" class="sr-only">login</label>
-        <input name ="login" type="text" id="login" class="form-control" placeholder="Email address" required autofocus>
+        <input name ="login" type="text" id="login" class="form-control" placeholder="логин" required autofocus>
         <label for="password" class="sr-only">Password</label>
-        <input name="password" type="password" id="password" class="form-control" placeholder="Password" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <input name="password" type="password" id="password" class="form-control" placeholder="пароль" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Вход</button>
     </form>
 
 </div> <!-- /container -->
