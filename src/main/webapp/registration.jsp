@@ -10,7 +10,7 @@
     <input placeholder="пароль" type="text" name="password"/>
     <input placeholder="имя" type="text" name="name"/>
     <input placeholder="фамилия" type="text" name="surname"/>
-    <input placeholder="возраст" type="text" name="age"/>
+    <%--<input placeholder="возраст" type="text" name="age"/>--%>
     <input type="submit" value="registration"/>
 </form>
 </body>

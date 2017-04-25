@@ -3,23 +3,22 @@ package model.dao;
 import model.SingletonDBConnection;
 import model.pojo.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
     @Override
     public User findUserByLoginAndPassword(String login, String password) {
         User user = null;
 
-        System.out.println("Этап UserDAOImpl");
+//        System.out.println("Этап UserDAOImpl");
 
 //        try (Connection connection = SingletonDBConnection.getInstance().connect();
 //             PreparedStatement statement = connection
 //                .prepareStatement( "SELECT * FROM users WHERE login = ? AND password = ?");) {
 
-            Connection connection = SingletonDBConnection.getInstance().connect();
+        Connection connection = SingletonDBConnection.getInstance().connect();
         PreparedStatement statement = null;
         try {
             statement = connection
@@ -73,9 +72,53 @@ public class UserDAOImpl implements UserDAO {
                 admin,
                 resultSet.getString("name"),
                 resultSet.getString("surname"),
-                resultSet.getInt("age"),
+//                resultSet.getInt("age"),
                 resultSet.getInt("id_studentFriend"),
                 resultSet.getString("conversation")
                 );
+    }
+
+    @Override
+    public void insertUser(String login, String password, String name, String surname) throws Exception {
+        User user = null;
+        Connection connection = SingletonDBConnection.getInstance().connect();
+
+        try {
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("insert into users(login, password, " +
+                            "isBlocked, isAdmin, name, surname, id_studentFriend) " +
+                            "values (?,?,?,?,?,?,?) ");
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, password);
+            preparedStatement.setString(3, "N");
+            preparedStatement.setString(4, "N");
+            preparedStatement.setString(5, name);
+            preparedStatement.setString(6, surname);
+            preparedStatement.setInt(7, 0);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new Exception();
+//            e.printStackTrace();
+        }
+//        return null;
+    }
+
+    @Override
+    public List<User> selectAllUsers() {
+        List<User> users = new ArrayList<>();
+        Connection connection = SingletonDBConnection.getInstance().connect();
+//        PreparedStatement statement = null;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM users");
+
+            while (resultSet.next()){
+                users.add(createEntity(resultSet));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
     }
 }

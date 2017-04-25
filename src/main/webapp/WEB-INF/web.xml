@@ -62,4 +62,13 @@
     <servlet-name>ErrorLoginServlet</servlet-name>
     <url-pattern>/loginerror</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>controllers.AdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/adminmain</url-pattern>
+  </servlet-mapping>
 </web-app>

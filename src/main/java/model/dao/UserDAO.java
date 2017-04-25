@@ -2,9 +2,11 @@ package model.dao;
 
 import model.pojo.User;
 
-/**
- * Created by Admin on 23.04.2017.
- */
+import java.util.List;
+
+
 public interface UserDAO {
     User findUserByLoginAndPassword(String login, String password);
+    void insertUser(String login, String password, String name, String surname) throws Exception;
+    List<User> selectAllUsers();
 }
