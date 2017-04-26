@@ -72,7 +72,7 @@
                 <%--<li><a href="#">Dashboard</a></li>--%>
                 <%--<li><a href="#">Settings</a></li>--%>
                 <%--<li><a href="#">Profile</a></li>--%>
-                <li><form method="post" action="/main">
+                <li><form method="post" action="/adminmain">
                     <input class="btn btn-primary" type="submit" value="выход" name="exit"/>
                 </form></li>
             </ul>
