@@ -79,4 +79,10 @@
     <servlet-name>AdminServlet</servlet-name>
     <url-pattern>/adminmain</url-pattern>
   </servlet-mapping>
+
+
+  <context-param>
+    <param-name>WsUrl</param-name>
+    <param-value>ws://localhost:8081/single-room-chat/chat</param-value>
+  </context-param>
 </web-app>
