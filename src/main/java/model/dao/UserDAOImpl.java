@@ -15,12 +15,6 @@ public class UserDAOImpl implements UserDAO {
     public User findUserByLoginAndPassword(String login, String password) {
         User user = null;
 
-//        System.out.println("Этап UserDAOImpl");
-
-//        try (Connection connection = SingletonDBConnection.getInstance().connect();
-//             PreparedStatement statement = connection
-//                .prepareStatement( "SELECT * FROM users WHERE login = ? AND password = ?");) {
-
         Connection connection = SingletonDBConnection.getInstance().connect();
         PreparedStatement statement = null;
         try {
@@ -37,13 +31,6 @@ public class UserDAOImpl implements UserDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-
-//            logger.debug("user " + user);
-//        } catch (SQLException e) {
-////            logger.error(e);
-//        }
 
         System.out.println(user);
 
@@ -75,7 +62,6 @@ public class UserDAOImpl implements UserDAO {
                 admin,
                 resultSet.getString("name"),
                 resultSet.getString("surname"),
-//                resultSet.getInt("age"),
                 resultSet.getInt("id_studentFriend"),
                 resultSet.getString("conversation")
                 );
@@ -101,16 +87,13 @@ public class UserDAOImpl implements UserDAO {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new Exception();
-//            e.printStackTrace();
         }
-//        return null;
     }
 
     @Override
     public List<User> selectAllUsers() {
         List<User> users = new ArrayList<>();
         Connection connection = SingletonDBConnection.getInstance().connect();
-//        PreparedStatement statement = null;
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM users");

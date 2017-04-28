@@ -29,7 +29,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void signUp(String login, String password, String name, String surname) throws Exception {
         userDAO.insertUser(login, password, name, surname);
-//        return user;
     }
 
     @Override
