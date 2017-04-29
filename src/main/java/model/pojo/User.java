@@ -8,8 +8,11 @@ public class User {
     private boolean isAdmin;
     private String name;
     private String surname;
-    private int idStudentFriend;
-    private String conversation;
+    private int idRoom;
+
+    public int getIdRoom() {
+        return idRoom;
+    }
 
     public String getSurname() {
         return surname;
@@ -21,7 +24,7 @@ public class User {
 
     public User(int idUser, String login, String password,
                 boolean isBlocked, boolean isAdmin, String name,
-                String surname, int idStudentFriend, String conversation) {
+                String surname, int idRoom) {
         this.idUser = idUser;
         this.login = login;
         this.password = password;
@@ -29,8 +32,7 @@ public class User {
         this.isAdmin = isAdmin;
         this.name = name;
         this.surname = surname;
-        this.idStudentFriend = idStudentFriend;
-        this.conversation = conversation;
+        this.idRoom =idRoom;
     }
 
     public String getName() {
@@ -47,8 +49,7 @@ public class User {
                 ", isAdmin=" + isAdmin +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", idStudentFriend=" + idStudentFriend +
-                ", conversation='" + conversation + '\'' +
+                ", idRoom=" + idRoom +
                 '}';
     }
 

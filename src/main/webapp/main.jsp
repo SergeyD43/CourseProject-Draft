@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <% String WsUrl = getServletContext().getInitParameter("WsUrl"); %>
 <% String name = (String) request.getSession().getAttribute("nameUser");%>
+<% int room = (int) request.getSession().getAttribute("room");%>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,7 +18,8 @@
     <script type="text/javascript">
         var wsUri = '<%=WsUrl%>';
         var name = '<%=name%>';
-        var proxy = CreateProxy(wsUri, name);
+        var room = '<%=room%>';
+        var proxy = CreateProxy(wsUri, name, room);
 
         document.addEventListener("DOMContentLoaded", function(event) {
             console.log(document.getElementById('loginPanel'));
@@ -36,6 +38,9 @@
 <body>
 <h1>
 <%=name%>
+</h1>
+<h1>
+    <%="Chatroom №" + room%>
 </h1>
 <form method="post" action="/main">
     <input type="submit" value="выход" name="exit" onclick="proxy.logout()"/>

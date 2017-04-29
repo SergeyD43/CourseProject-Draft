@@ -62,8 +62,7 @@ public class UserDAOImpl implements UserDAO {
                 admin,
                 resultSet.getString("name"),
                 resultSet.getString("surname"),
-                resultSet.getInt("id_studentFriend"),
-                resultSet.getString("conversation")
+                resultSet.getInt("id_room")
                 );
     }
 
@@ -75,7 +74,7 @@ public class UserDAOImpl implements UserDAO {
         try {
             PreparedStatement preparedStatement =
                     connection.prepareStatement("insert into users(login, password, " +
-                            "isBlocked, isAdmin, name, surname, id_studentFriend) " +
+                            "isBlocked, isAdmin, name, surname, id_room) " +
                             "values (?,?,?,?,?,?,?) ");
             preparedStatement.setString(1, login);
             preparedStatement.setString(2, password);

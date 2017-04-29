@@ -43,6 +43,7 @@ public class LoginServlet extends HttpServlet {
                 resp.sendRedirect(req.getContextPath() + "/adminmain");
             } else {
                 req.getSession().setAttribute("nameUser", user.getName() + " " + user.getSurname());
+                req.getSession().setAttribute("room", user.getIdRoom());
                 req.getSession().setAttribute("userLogin", login);
                 resp.sendRedirect(req.getContextPath() + "/main");
             }
