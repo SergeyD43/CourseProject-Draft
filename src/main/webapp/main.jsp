@@ -1,18 +1,23 @@
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <% String WsUrl = getServletContext().getInitParameter("WsUrl"); %>
+<% String name = (String) request.getSession().getAttribute("nameUser");%>
 <html>
 <head>
-    <title>Главная страница</title>
-    <link rel="stylesheet" type="text/css" href="content/styles/site.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name='viewport' content='minimum-scale=1.0, initial-scale=1.0,
+	width=device-width, maximum-scale=1.0, user-scalable=no'/>
+    <title>single-room-chat</title>
 
-    <script type="text/javascript" src="scripts/chatroom.js"></script>
+    <%--<link rel="stylesheet" type="text/css" href="css/site.css">--%>
+
+    <script type="text/javascript" src="chatroom.js"></script>
 
     <script type="text/javascript">
         var wsUri = '<%=WsUrl%>';
-        var proxy = CreateProxy(wsUri);
+        var name = '<%=name%>';
+        var proxy = CreateProxy(wsUri, name);
 
         document.addEventListener("DOMContentLoaded", function(event) {
             console.log(document.getElementById('loginPanel'));
@@ -27,44 +32,42 @@
 
     </script>
 </head>
+
 <body>
-<h2>Приветствуем Вас на главной странице!</h2>
-<% String name = (String) request.getSession().getAttribute("nameUser");%>
+<%--<% String name = (String) request.getSession().getAttribute("nameUser");%>--%>
 <h1>
-    <%=name%>
+<%=name%>
 </h1>
 <form method="post" action="/main">
+    <input type="submit" value="выход" name="exit" onclick="proxy.logout()"/>
+    </form>
+<div id="container">
 
-    <div id="container">
-
-        <%--<div id="loginPanel" style="display: none">--%>
-            <%--<div id="infoLabel">Type a name to join the room</div>--%>
-            <%--<div style="padding: 10px;">--%>
-                <%--<input id="txtLogin" type="text" class="loginInput"--%>
-                       <%--onkeyup="proxy.login_keyup(event)" />--%>
-                <%--<button type="button" class="loginInput" onclick="proxy.login()">Login</button>--%>
-            <%--</div>--%>
+    <%--<div id="loginPanel" >--%>
+        <%--<div id="infoLabel">Type a name to join the roo</div>--%>
+        <%--<div style="padding: 10px;">--%>
+            <%--<input id="txtLogin" type="text" class="loginInput"--%>
+                   <%--onkeyup="proxy.login_keyup(event)" />--%>
+            <%--<button type="button" class="loginInput" onclick="proxy.login()">Login</button>--%>
         <%--</div>--%>
+    <%--</div>--%>
 
-        <div id="msgPanel">
-            <div id="msgContainer" style="overflow: auto;"></div>
-            <div id="msgController">
+    <div id="msgPanel" <%--style="display: none"--%>>
+        <div id="msgContainer" style="overflow: auto;"></div>
+        <div id="msgController">
 
 			<textarea id="txtMsg"
                       title="Enter to send message"
                       onkeyup="proxy.sendMessage_keyup(event)"
                       style="height: 20px; width: 100%"></textarea>
 
-                <%--<button style="height: 30px; width: 100px" type="button"--%>
-                        <%--onclick="proxy.logout()">Logout</button>--%>
-                <input type="submit" value="выход" name="exit" onclick="proxy.logout()"/>
-            </div>
-        </div>
+            <%--<button style="height: 30px; width: 100px" type="button"--%>
+                    <%--onclick="proxy.logout()">Logout</button>--%>
 
+        </div>
     </div>
 
-
-</form>
+</div>
 </body>
 </html>
 

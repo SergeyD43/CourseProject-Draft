@@ -11,7 +11,7 @@ body {
 }
 
 #msgContainer {
-    position: absolute; top: 0px; bottom: 45px; background-color: white; width: 50%;
+    position: absolute; top: 0px; bottom: 45px; background-color: white; width: 100%;
 }
 
 #msgContainer .msgrow {
@@ -25,7 +25,7 @@ body {
 }
 
 #msgController {
-    position: absolute; bottom: 0px; height: 40px; display: flex; width: 50%;
+    position: absolute; bottom: 0px; height: 40px; display: flex; width: 100%;
 }
 
 #loginPanel {

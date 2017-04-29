@@ -1,16 +1,18 @@
-var CreateProxy = function(wsUri) {
+var CreateProxy = function(wsUri, name) {
     var websocket = null;
     var elements = null;
 
+    // console.log(name);
+
     var showMsgPanel = function() {
-        elements.loginPanel.style.display = "block";
+        elements.loginPanel.style.display = "none";
         elements.msgPanel.style.display = "block";
         elements.txtMsg.focus();
     };
 
     var hideMsgPanel = function() {
         elements.loginPanel.style.display = "block";
-        elements.msgPanel.style.display = "block";
+        elements.msgPanel.style.display = "none";
         elements.txtLogin.focus();
     };
 
@@ -34,33 +36,35 @@ var CreateProxy = function(wsUri) {
 
     return {
         login: function() {
-            elements.txtLogin.focus();
+            // elements.txtLogin.focus();
 
-            var name = elements.txtLogin.value.trim();
-            if (name == '') { return; }
-
-            elements.txtLogin.value = '';
+            // var name = elements.txtLogin.value.trim();
+            // var name = name;
+            // console.log(name);
+            // if (name == '') { return; }
+            //
+            // elements.txtLogin.value = '';
 
             // Initiate the socket and set up the events
-            if (websocket == null) {
-                websocket = new WebSocket(wsUri);
-
-                websocket.onopen = function() {
-                    var message = { messageType: 'LOGIN', message: name };
-                    websocket.send(JSON.stringify(message));
-                };
-                websocket.onmessage = function(e) {
-                    displayMessage(e.data);
-                    showMsgPanel();
-                    playSound();
-                };
-                websocket.onerror = function(e) {};
-                websocket.onclose = function(e) {
-                    websocket = null;
-                    clearMessage();
-                    hideMsgPanel();
-                };
-            }
+            // if (websocket == null) {
+            //     websocket = new WebSocket(wsUri);
+            //
+            //     websocket.onopen = function() {
+            //         var message = { messageType: 'LOGIN', message: name };
+            //         websocket.send(JSON.stringify(message));
+            //     };
+            //     websocket.onmessage = function(e) {
+            //         displayMessage(e.data);
+            //         showMsgPanel();
+            //         playSound();
+            //     };
+            //     websocket.onerror = function(e) {};
+            //     websocket.onclose = function(e) {
+            //         websocket = null;
+            //         clearMessage();
+            //         hideMsgPanel();
+            //     };
+            // }
         },
         sendMessage: function() {
             elements.txtMsg.focus();
@@ -84,7 +88,26 @@ var CreateProxy = function(wsUri) {
         },
         initiate: function(e) {
             elements = e;
-            elements.txtLogin.focus();
+            // elements.txtLogin.focus();
+            if (websocket == null) {
+                websocket = new WebSocket(wsUri);
+
+                websocket.onopen = function() {
+                    var message = { messageType: 'LOGIN', message: name };
+                    websocket.send(JSON.stringify(message));
+                };
+                websocket.onmessage = function(e) {
+                    displayMessage(e.data);
+                    showMsgPanel();
+                    playSound();
+                };
+                websocket.onerror = function(e) {};
+                websocket.onclose = function(e) {
+                    websocket = null;
+                    clearMessage();
+                    hideMsgPanel();
+                };
+            }
         }
     }
 };
