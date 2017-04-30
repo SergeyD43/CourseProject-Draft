@@ -32,7 +32,7 @@ public class User {
         this.isAdmin = isAdmin;
         this.name = name;
         this.surname = surname;
-        this.idRoom =idRoom;
+        this.idRoom = idRoom;
     }
 
     public String getName() {

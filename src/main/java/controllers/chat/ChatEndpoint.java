@@ -1,16 +1,19 @@
 package main.java.controllers.chat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @ServerEndpoint(value = "/chat/{room}")
 public class ChatEndpoint {
-    private Room room1 = Room.getRoom();
-    private Room2 room2 = Room2.getRoom2();
+
+    private static List<ChatRoom> chatRoomList = new ArrayList<>();
 
     @OnOpen
     public void onOpen(final Session session, @PathParam("room") final String room) {
@@ -34,42 +37,54 @@ public class ChatEndpoint {
 
         Map<String, Object> properties = session.getUserProperties();
         if (chatMessage.getMessageType() == MessageType.LOGIN) {
-            if(chatMessage.getRoom()==1){
-                String name = chatMessage.getMessage();
-                properties.put("name", name);
-                room1.join(session);
-                room1.sendMessage(name + " - Joined the chat room");
-            } else {
-                String name = chatMessage.getMessage();
-                properties.put("name", name);
-                room2.join(session);
-                room2.sendMessage(name + " - Joined the chat room");
+            int idRoom = chatMessage.getRoom();
+            String name = chatMessage.getMessage();
+            properties.put("name", name);
+            boolean b = true;
+
+            for (ChatRoom chatRoom:chatRoomList) {
+                if(chatRoom.getId()==idRoom){
+                    b=false;
+                    chatRoom.join(session);
+                    chatRoom.sendMessage(name + " - Joined the chat room" + idRoom);
+                    break;
+                }
+            }
+
+            if(b) {
+                ChatRoom chatRoom = new ChatRoom(idRoom);
+                chatRoomList.add(chatRoom);
+                chatRoom.join(session);
+                chatRoom.sendMessage(name + " - Joined the chat room" + idRoom);
             }
         }
         else {
-            if(chatMessage.getRoom()==1){
-                String name = (String)properties.get("name");
-                room1.sendMessage(name + " - " + chatMessage.getMessage());
-            } else {
-                String name = (String)properties.get("name");
-                room2.sendMessage(name + " - " + chatMessage.getMessage());
+            int idRoom = chatMessage.getRoom();
+            String name = (String)properties.get("name");
+
+            for (ChatRoom chatRoom:chatRoomList) {
+                if(chatRoom.getId()==idRoom){
+                    chatRoom.sendMessage(name + " - " + chatMessage.getMessage());
+                    break;
+                }
             }
+
         }
     }
 
     @OnClose
     public void OnClose(Session session, CloseReason reason) {
-        String roomP = (String) session.getUserProperties().get("room");
-        int room = Integer.parseInt(roomP);
-        System.out.println(room);
-        if(room ==1){
-            room1.leave(session);
-            room1.sendMessage((String)session.getUserProperties().get("name") + " - Left the room " + room);
-        }
-        if(room ==2){
-            room2.leave(session);
-            room2.sendMessage((String)session.getUserProperties().get("name") + " - Left the room " + room);
-        }
+//        String roomP = (String) session.getUserProperties().get("room");
+//        int room = Integer.parseInt(roomP);
+//        System.out.println(room);
+//        if(room == 1){
+//            chatRoom1.leave(session);
+//            chatRoom1.sendMessage((String)session.getUserProperties().get("name") + " - Left the room " + room);
+//        }
+//        if(room == 2){
+//            chatRoom2.leave(session);
+//            chatRoom2.sendMessage((String)session.getUserProperties().get("name") + " - Left the room " + room);
+//        }
     }
 
     @OnError
