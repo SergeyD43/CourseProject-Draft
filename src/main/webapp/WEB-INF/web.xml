@@ -82,7 +82,7 @@
 
   <context-param>
     <param-name>WsUrl</param-name>
-    <param-value>ws://localhost:8086/chat</param-value>
+    <param-value>ws://localhost:8087/chat</param-value>
   </context-param>
 
   <listener>

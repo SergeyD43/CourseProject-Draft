@@ -74,17 +74,18 @@ public class ChatEndpoint {
 
     @OnClose
     public void OnClose(Session session, CloseReason reason) {
-//        String roomP = (String) session.getUserProperties().get("room");
-//        int room = Integer.parseInt(roomP);
-//        System.out.println(room);
-//        if(room == 1){
-//            chatRoom1.leave(session);
-//            chatRoom1.sendMessage((String)session.getUserProperties().get("name") + " - Left the room " + room);
-//        }
-//        if(room == 2){
-//            chatRoom2.leave(session);
-//            chatRoom2.sendMessage((String)session.getUserProperties().get("name") + " - Left the room " + room);
-//        }
+
+        String roomP = (String) session.getUserProperties().get("room");
+        int room = Integer.parseInt(roomP);
+
+        for (ChatRoom chatRoom:chatRoomList) {
+            if(chatRoom.getId()==room){
+//                chatRoom.sendMessage(name + " - " + chatMessage.getMessage());
+                chatRoom.leave(session);
+                chatRoom.sendMessage((String)session.getUserProperties().get("name") + " - Left the room " + room);
+                break;
+            }
+        }
     }
 
     @OnError
