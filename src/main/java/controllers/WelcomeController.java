@@ -93,9 +93,13 @@ public class WelcomeController {
         return modelAndView;
     }
 
-
     @RequestMapping(value = "/main", method = RequestMethod.POST)
     public ModelAndView makeExit(){
         return new ModelAndView("redirect:/login");
+    }
+
+    @RequestMapping(value = "/loginerror")
+    public ModelAndView showError(){
+        return new ModelAndView("loginerror");
     }
 }

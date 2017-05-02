@@ -70,9 +70,10 @@
                 <%--<li><a href="#">Dashboard</a></li>--%>
                 <%--<li><a href="#">Settings</a></li>--%>
                 <%--<li><a href="#">Profile</a></li>--%>
-                <li><form method="post" action="/loginerror">
-                    <input class="btn btn-primary" type="submit" value="назад" name="ago"/>
-                </form></li>
+                <%--<li><form method="post" action="/loginerror">--%>
+                    <%--<input class="btn btn-primary" type="submit" value="назад" name="ago"/>--%>
+                <%--</form></li>--%>
+                <li><a href="/login">назад</a></li>
             </ul>
             <%--<form class="navbar-form navbar-right">--%>
             <%--<input type="text" class="form-control" placeholder="Search...">--%>
