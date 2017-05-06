@@ -81,13 +81,13 @@
 
     <form method ="post" action="/registration" class="form-signin">
         <h2 class="my-title form-signin-heading">Регистрация</h2>
-        <label for="login" class="sr-only">login</label>
+        <label for="login" class="sr-only"></label>
         <input name ="login" type="text" id="login" class="form-control" placeholder="логин" required autofocus>
-        <label for="password" class="sr-only">login</label>
+        <label for="password" class="sr-only"></label>
         <input name ="password" type="text" id="password" class="form-control" placeholder="пароль" required autofocus>
-        <label for="name" class="sr-only">login</label>
+        <label for="name" class="sr-only"></label>
         <input name ="name" type="text" id="name" class="form-control" placeholder="имя" required autofocus>
-        <label for="surname" class="sr-only">login</label>
+        <label for="surname" class="sr-only"></label>
         <input name ="surname" type="text" id="surname" class="form-control" placeholder="фамилия" required autofocus>
         <%--<label for="password" class="sr-only">Password</label>--%>
         <%--<input name="password" type="password" id="password" class="form-control" placeholder="Password" required>--%>

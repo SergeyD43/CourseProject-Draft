@@ -5,6 +5,7 @@ import main.java.model.pojo.User;
 import main.java.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,12 +17,21 @@ import java.util.List;
 @Controller
 public class WelcomeController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @RequestMapping(value = "/")
-    public ModelAndView main() {
-        return new ModelAndView("welcome");
+    @Autowired
+    public WelcomeController(UserService userService) {
+        this.userService = userService;
+    }
+
+//    @RequestMapping(value = "/")
+//    public ModelAndView main() {
+//        return new ModelAndView("welcome");
+//    }
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String main(Model model) {
+        return "welcome";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)

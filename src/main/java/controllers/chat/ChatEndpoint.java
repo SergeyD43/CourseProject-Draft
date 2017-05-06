@@ -46,7 +46,7 @@ public class ChatEndpoint {
                 if(chatRoom.getId()==idRoom){
                     b=false;
                     chatRoom.join(session);
-                    chatRoom.sendMessage(name + " - Joined the chat room" + idRoom);
+                    chatRoom.sendMessage(name + " - Joined the chatroom №" + idRoom);
                     break;
                 }
             }
@@ -55,7 +55,7 @@ public class ChatEndpoint {
                 ChatRoom chatRoom = new ChatRoom(idRoom);
                 chatRoomList.add(chatRoom);
                 chatRoom.join(session);
-                chatRoom.sendMessage(name + " - Joined the chat room" + idRoom);
+                chatRoom.sendMessage(name + " - Joined the chatroom №" + idRoom);
             }
         }
         else {
@@ -79,7 +79,7 @@ public class ChatEndpoint {
         for (ChatRoom chatRoom:chatRoomList) {
             if(chatRoom.getId()==room){
                 chatRoom.leave(session);
-                chatRoom.sendMessage((String)session.getUserProperties().get("name") + " - Left the room " + room);
+                chatRoom.sendMessage((String)session.getUserProperties().get("name") + " - Left the chatroom №" + room);
                 break;
             }
         }

@@ -2,6 +2,9 @@ package main.java.model.dao;
 
 import main.java.model.SingletonDBConnection;
 import main.java.model.pojo.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -11,12 +14,19 @@ import java.util.List;
 @Repository
 public class UserDAOImpl implements UserDAO {
 
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
     @Override
     public User findUserByLoginAndPassword(String login, String password) {
         User user = null;
 
         Connection connection = SingletonDBConnection.getInstance().connect();
         PreparedStatement statement = null;
+
+//        String spassword = encoder.encode(password);
+//        System.out.println(spassword);
+
         try {
             statement = connection
                     .prepareStatement( "SELECT * FROM users WHERE login = ? AND password = ?");
@@ -32,7 +42,6 @@ public class UserDAOImpl implements UserDAO {
             e.printStackTrace();
         }
 
-//        System.out.println(user);
 
         return user;
     }
@@ -55,6 +64,11 @@ public class UserDAOImpl implements UserDAO {
             admin = false;
         }
 
+//        String password = encoder.encode(resultSet.getString("password"));
+//
+//        String p = encoder.encode("Java");
+//        System.out.printf(p);
+
         return new User(resultSet.getInt("id_user"),
                 resultSet.getString("login"),
                 resultSet.getString("password"),
@@ -70,6 +84,10 @@ public class UserDAOImpl implements UserDAO {
     public void insertUser(String login, String password, String name, String surname) throws Exception {
         User user = null;
         Connection connection = SingletonDBConnection.getInstance().connect();
+
+//        String spassword = encoder.encode(password);
+//        System.out.println("khjk");
+//        System.out.println(encoder.encode("code"));
 
         try {
             PreparedStatement preparedStatement =
