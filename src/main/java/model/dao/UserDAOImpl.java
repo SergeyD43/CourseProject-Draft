@@ -87,14 +87,14 @@ public class UserDAOImpl implements UserDAO {
             admin = false;
         }
 
-//        String password = encoder.encode(resultSet.getString("password"));
+        String password = encoder.encode(resultSet.getString("password"));
 //
 //        String p = encoder.encode("Java");
 //        System.out.printf(p);
 
         return new User(resultSet.getInt("id_user"),
                 resultSet.getString("login"),
-                resultSet.getString("password"),
+                password,
                 block,
                 admin,
                 resultSet.getString("name"),
@@ -111,6 +111,8 @@ public class UserDAOImpl implements UserDAO {
 //        String spassword = encoder.encode(password);
 //        System.out.println("khjk");
 //        System.out.println(encoder.encode("code"));
+        String encode = encoder.encode(password);
+
 
         try {
             PreparedStatement preparedStatement =
@@ -118,7 +120,7 @@ public class UserDAOImpl implements UserDAO {
                             "isBlocked, role, name, surname, id_room) " +
                             "values (?,?,?,?,?,?,?) ");
             preparedStatement.setString(1, login);
-            preparedStatement.setString(2, password);
+            preparedStatement.setString(2, encode);
             preparedStatement.setString(3, "N");
             preparedStatement.setString(4, "ROLE_USER");
             preparedStatement.setString(5, name);
