@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -44,9 +45,10 @@ ${nameUser}
 <h1>
     Chatroom №${room}
 </h1>
-<form method="post" action="/main">
-    <input type="submit" value="выход" name="exit" onclick="proxy.logout()"/>
-    </form>
+<%--<form method="post" action="/main">--%>
+    <%--<input type="submit" value="выход" name="exit" onclick="proxy.logout()"/>--%>
+    <%--</form>--%>
+<a href="<c:url value="/j_spring_security_logout"/>" onclick="proxy.logout()">Logout</a>
 <div id="container">
 
     <div id="msgPanel" >
