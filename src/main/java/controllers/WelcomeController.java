@@ -31,7 +31,7 @@ public class WelcomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String main(Model model) {
-        return "welcome";
+        return "entrance";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -44,23 +44,23 @@ public class WelcomeController {
         return new ModelAndView("registration");
     }
 
-    @RequestMapping(value="/login", method = RequestMethod.POST)
-    public ModelAndView showMain(@RequestParam("login") String login, @RequestParam("password") String password){
-        ModelAndView modelAndView;
-        User user = userService.auth(login, password);
-        if (user!= null) {
-            if("admin".equals(user.getLogin())){
-                modelAndView = new ModelAndView("redirect:/adminmain");
-            } else {
-                modelAndView = new ModelAndView();
-                int idUser = user.getIdUser();
-                modelAndView.setViewName("redirect:/main/" + idUser);
-            }
-        } else {
-            modelAndView = new ModelAndView("redirect:/loginerror");
-        }
-        return modelAndView;
-    }
+//    @RequestMapping(value="/login")
+//    public ModelAndView showMain(@RequestParam("login") String login, @RequestParam("password") String password){
+//        ModelAndView modelAndView;
+//        User user = userService.auth(login, password);
+//        if (user!= null) {
+//            if("admin".equals(user.getLogin())){
+//                modelAndView = new ModelAndView("redirect:/adminmain");
+//            } else {
+//                modelAndView = new ModelAndView();
+//                int idUser = user.getIdUser();
+//                modelAndView.setViewName("redirect:/main/" + idUser);
+//            }
+//        } else {
+//            modelAndView = new ModelAndView("redirect:/loginerror");
+//        }
+//        return modelAndView;
+//    }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView makeRegistration(@RequestParam("login") String login, @RequestParam("password") String password,
@@ -78,12 +78,20 @@ public class WelcomeController {
             modelAndView = new ModelAndView("redirect:/loginerror");
         } else {
             User user = userService.getUserByLogin(login);
-            int idUser = user.getIdUser();
-            modelAndView = new ModelAndView("redirect:/main/" + idUser);
+            String userLogin = user.getLogin();
+//            int idUser = user.getIdUser();
+            modelAndView = new ModelAndView("redirect:/main/" + userLogin);
         }
 
         return modelAndView;
     }
+
+
+//    @RequestMapping(value = "/welcome")
+//    public ModelAndView showWelcome(){
+//
+//        return new ModelAndView("redirect:/adminmain");
+//    }
 
     @RequestMapping(value = "/adminmain")
     public ModelAndView showAdminPanel(){
@@ -94,10 +102,11 @@ public class WelcomeController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/main/{id}")
-    public ModelAndView showMainPanel(@PathVariable int id){
+    @RequestMapping(value = "/main/{login}")
+    public ModelAndView showMainPanel(@PathVariable String login){
         ModelAndView modelAndView = new ModelAndView("main");
-        User user = userService.getUserById(id);
+//        User user = userService.getUserById(id);
+        User user = userService.getUserByLogin(login);
         modelAndView.addObject("nameUser", user.getName() + " " + user.getSurname());
         modelAndView.addObject("room", user.getIdRoom());
         return modelAndView;

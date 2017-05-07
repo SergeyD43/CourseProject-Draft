@@ -17,6 +17,29 @@ public class UserDAOImpl implements UserDAO {
     @Autowired
     private BCryptPasswordEncoder encoder;
 
+    public int getUserIdByLogin(String login){
+
+        Connection connection = SingletonDBConnection.getInstance().connect();
+        PreparedStatement statement = null;
+        Integer result = null;
+
+        try {
+            statement = connection
+                    .prepareStatement( "SELECT id_user FROM users WHERE login = ?");
+            statement.setString(1, login);
+
+
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                result = resultSet.getInt("id_user");
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     @Override
     public User findUserByLoginAndPassword(String login, String password) {
         User user = null;
