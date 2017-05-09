@@ -87,10 +87,13 @@ public class UserDAOImpl implements UserDAO {
             admin = false;
         }
 
-        String password = encoder.encode(resultSet.getString("password"));
+//        String password = encoder.encode(resultSet.getString("password"));
+//        System.out.println("password " + password);
 //
 //        String p = encoder.encode("Java");
 //        System.out.printf(p);
+        String password = resultSet.getString("password");
+        System.out.println("password " + password);
 
         return new User(resultSet.getInt("id_user"),
                 resultSet.getString("login"),

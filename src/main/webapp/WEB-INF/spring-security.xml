@@ -33,7 +33,7 @@
 
     <authentication-manager>
         <authentication-provider>
-            <password-encoder ref="encoder"></password-encoder>
+            <password-encoder ref="encoder"/>
             <jdbc-user-service data-source-ref="dataSource"
                                users-by-username-query=
                                        "select login, password, true from users where login=?"
@@ -47,6 +47,7 @@
                 class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
         <beans:constructor-arg name="strength" value="12"/>
     </beans:bean>
+
     <beans:bean id="myAuthenticationSuccessHandler" class="main.java.controllers.MySimpleUrlAuthenticationSuccessHandler"/>
 
 </beans:beans>
