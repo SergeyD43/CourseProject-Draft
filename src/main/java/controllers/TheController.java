@@ -31,10 +31,10 @@ public class TheController {
 //        return "/entrance";
 //    }
 
-    @RequestMapping(value = {"/" ,"/login"}, method = RequestMethod.GET)
-    public ModelAndView showLogin() {
-        return new ModelAndView("/login");
-    }
+//    @RequestMapping(value = {"/" ,"/login"}, method = RequestMethod.GET)
+//    public ModelAndView showLogin() {
+//        return new ModelAndView("/login");
+//    }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView showRegistration() {
@@ -59,16 +59,32 @@ public class TheController {
 //        return modelAndView;
 //    }
 
+//    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = {"/" ,"/login"}, method = RequestMethod.GET)
+    public String login(Model model, String error, String logout) {
+        if (error != null) {
+            model.addAttribute("error", "Логин или пароль некорректен");
+        }
+
+        if (logout != null) {
+            model.addAttribute("message", "Выход совершён успешно");
+        }
+
+        return "login";
+    }
+
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView makeRegistration(@RequestParam("login") String login, @RequestParam("password") String password,
                                          @RequestParam("name") String name, @RequestParam("surname") String surname){
         ModelAndView modelAndView;
         boolean exception=false;
 
-        if(login.equals("bom")){
-            System.out.println("bom");
-            throw new CustomGenericException("bom1", "bom2");
-        }
+        Validator.proverka(login, password, name, surname);
+
+//        if(login.equals("bom")){
+//            System.out.println("bom");
+//            throw new CustomGenericException("bom1", "bom2");
+//        }
 
         try {
             userService.signUp(login, password, name, surname);

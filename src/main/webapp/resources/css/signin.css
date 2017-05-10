@@ -44,3 +44,18 @@ body {
   margin: 0 auto;
   display: block;
 }
+
+.error-title {
+  color: red;
+  font-size: 13px;
+  display: block;
+  text-align: center;
+}
+
+.logged-title {
+  color: green;
+  font-size: 13px;
+  display: block;
+  text-align: center;
+}
+

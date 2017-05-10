@@ -26,6 +26,7 @@
         <form-login
                 authentication-success-handler-ref="myAuthenticationSuccessHandler"
         login-page="/login"
+        authentication-failure-url="/login?error"
         username-parameter="login"
         password-parameter="password"/>
         <logout logout-success-url="/login?logout"  />

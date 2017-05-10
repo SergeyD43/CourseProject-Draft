@@ -105,6 +105,8 @@
         <input name ="login" type="text" id="login" class="form-control" placeholder="логин" required autofocus>
         <label for="password" class="sr-only">Password</label>
         <input name="password" type="password" id="password" class="form-control" placeholder="пароль" required>
+        <span class="error-title">${error}</span>
+        <span class="logged-title">${message}</span>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Вход</button>
         <a class="my-title form-signin-heading" href="/registration">Регистрация</a>

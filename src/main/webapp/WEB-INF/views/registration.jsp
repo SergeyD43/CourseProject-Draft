@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%--<html>--%>
 <%--<head>--%>
     <%--<title>Регистрация</title>--%>
@@ -32,14 +33,14 @@
     <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="/resources/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/resources/css/signin.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="/js/ie-emulation-modes-warning.js"></script>
+    <!--[if lt IE 9]><script src="/resources/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/resources/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -59,7 +60,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Школа иностанных языков</a>
+            <a class="navbar-brand" href="/login">Школа иностранных языков</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -84,7 +85,7 @@
         <label for="login" class="sr-only"></label>
         <input name ="login" type="text" id="login" class="form-control" placeholder="логин" required autofocus>
         <c:if test="${not empty errCode}">
-            <h1>${errCode}</h1>
+            <h1 class="error-title">${errCode}</h1>
         </c:if>
         <label for="password" class="sr-only"></label>
         <input name ="password" type="text" id="password" class="form-control" placeholder="пароль" required autofocus>
@@ -101,7 +102,7 @@
 
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="/js/ie10-viewport-bug-workaround.js"></script>
+<script src="/resources/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
 
