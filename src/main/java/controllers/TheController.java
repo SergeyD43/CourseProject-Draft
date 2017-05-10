@@ -6,21 +6,18 @@ import main.java.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @Controller
-public class WelcomeController {
+public class TheController {
 
     private final UserService userService;
 
     @Autowired
-    public WelcomeController(UserService userService) {
+    public TheController(UserService userService) {
         this.userService = userService;
     }
 
@@ -29,19 +26,19 @@ public class WelcomeController {
 //        return new ModelAndView("welcome");
 //    }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String main(Model model) {
-        return "entrance";
-    }
+//    @RequestMapping(value = "/", method = RequestMethod.GET)
+//    public String main(Model model) {
+//        return "/entrance";
+//    }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = {"/" ,"/login"}, method = RequestMethod.GET)
     public ModelAndView showLogin() {
-        return new ModelAndView("login");
+        return new ModelAndView("/login");
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView showRegistration() {
-        return new ModelAndView("registration");
+        return new ModelAndView("/registration");
     }
 
 //    @RequestMapping(value="/login")
@@ -67,6 +64,11 @@ public class WelcomeController {
                                          @RequestParam("name") String name, @RequestParam("surname") String surname){
         ModelAndView modelAndView;
         boolean exception=false;
+
+        if(login.equals("bom")){
+            System.out.println("bom");
+            throw new CustomGenericException("bom1", "bom2");
+        }
 
         try {
             userService.signUp(login, password, name, surname);
@@ -95,7 +97,7 @@ public class WelcomeController {
 
     @RequestMapping(value = "/adminmain")
     public ModelAndView showAdminPanel(){
-        ModelAndView modelAndView = new ModelAndView("adminmain");
+        ModelAndView modelAndView = new ModelAndView("/adminmain");
         List<User> users = userService.getAllUsers();
 
         modelAndView.addObject("users2", users);
@@ -104,7 +106,7 @@ public class WelcomeController {
 
     @RequestMapping(value = "/main/{login}")
     public ModelAndView showMainPanel(@PathVariable String login){
-        ModelAndView modelAndView = new ModelAndView("main");
+        ModelAndView modelAndView = new ModelAndView("/main");
 //        User user = userService.getUserById(id);
         User user = userService.getUserByLogin(login);
         modelAndView.addObject("nameUser", user.getName() + " " + user.getSurname());
@@ -119,6 +121,17 @@ public class WelcomeController {
 
     @RequestMapping(value = "/loginerror")
     public ModelAndView showError(){
-        return new ModelAndView("loginerror");
+        return new ModelAndView("/loginerror");
+    }
+
+    @ExceptionHandler(CustomGenericException.class)
+    public ModelAndView handleCustomException(CustomGenericException ex) {
+        System.out.println("bom");
+        ModelAndView model = new ModelAndView("registration");
+        model.addObject("errCode", ex.getErrCode());
+        model.addObject("errMsg", ex.getErrMsg());
+
+        return model;
+
     }
 }

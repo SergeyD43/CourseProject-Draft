@@ -6,6 +6,10 @@
   <display-name>Archetype Created Web Application</display-name>
 
   <!--<welcome-file-list>-->
+    <!--<welcome-file>login.jsp</welcome-file>-->
+  <!--</welcome-file-list>-->
+
+  <!--<welcome-file-list>-->
     <!--<welcome-fentrance.jsp.jsp</welcome-file>-->
   <!--</welcome-file-list>-->
 

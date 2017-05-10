@@ -32,13 +32,13 @@
     <title>Dashboard Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/main/webapp/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/main/webapp/css/dashboard.css" rel="stylesheet">
+    <link href="/resources/css/dashboard.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -54,30 +54,33 @@
 <body>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <%--<div class="container-fluid">--%>
-        <%--<div class="navbar-header">--%>
-            <%--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">--%>
-                <%--<span class="sr-only">Toggle navigation</span>--%>
-                <%--<span class="icon-bar"></span>--%>
-                <%--<span class="icon-bar"></span>--%>
-                <%--<span class="icon-bar"></span>--%>
-            <%--</button>--%>
-            <%--<a class="navbar-brand" href="#">Школа иностанных языков</a>--%>
-        <%--</div>--%>
-        <%--<div id="navbar" class="navbar-collapse collapse">--%>
-            <%--<ul class="nav navbar-nav navbar-right">--%>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Школа иностранных языков</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="<c:url value="/j_spring_security_logout"/>" >Выход</a></li>
                 <%--<li><a href="#">Dashboard</a></li>--%>
                 <%--<li><a href="#">Settings</a></li>--%>
                 <%--<li><a href="#">Profile</a></li>--%>
-                <%--<li><form method="post" action="/adminmain">--%>
-                    <%--<input class="btn btn-primary" type="submit" value="выход" name="exit"/>--%>
-                <%--</form></li>--%>
+                <%--&lt;%&ndash;<li>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<form method="post" action="/adminmain">&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<input class="btn btn-primary" type="submit" value="выход" name="exit"/>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;</form>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
             <%--</ul>--%>
             <%--<form class="navbar-form navbar-right">--%>
                 <%--<input type="text" class="form-control" placeholder="Search...">--%>
             <%--</form>--%>
-        <%--</div>--%>
-    <%--</div>--%>
+        </div>
+    </div>
 </nav>
 
 <div class="container-fluid">
@@ -139,7 +142,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
-<script src="/main/webapp/js/bootstrap.min.js"></script>
+<script src="/resources/js/bootstrap.min.js"></script>
 <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 <script src="/js/vendor/holder.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

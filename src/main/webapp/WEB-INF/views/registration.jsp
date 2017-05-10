@@ -29,13 +29,13 @@
     <title>Авторизация</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/main/webapp/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/main/webapp/css/signin.css" rel="stylesheet">
+    <link href="/resources/css/signin.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -83,6 +83,9 @@
         <h2 class="my-title form-signin-heading">Регистрация</h2>
         <label for="login" class="sr-only"></label>
         <input name ="login" type="text" id="login" class="form-control" placeholder="логин" required autofocus>
+        <c:if test="${not empty errCode}">
+            <h1>${errCode}</h1>
+        </c:if>
         <label for="password" class="sr-only"></label>
         <input name ="password" type="text" id="password" class="form-control" placeholder="пароль" required autofocus>
         <label for="name" class="sr-only"></label>

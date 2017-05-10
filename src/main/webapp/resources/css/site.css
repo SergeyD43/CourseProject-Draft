@@ -3,19 +3,19 @@ html, body {
 }
 
 body {
-    background-color: #e6e6e6; font-family: Helvetica; font-size: 12pt;
+    background-color: rgba(253, 19, 32, 0); font-family: Helvetica; font-size: 12pt;
 }
 
 #container {
-    display: block; position: absolute; bottom:0; top:0; left:0; right:0; margin: 8px;
+    display: block; position: absolute; bottom:0; top:0; left:0; right:0; margin: 8px; height: 90%; overflow-y: scroll;
 }
 
 #msgContainer {
-    position: absolute; top: 0px; bottom: 45px; background-color: white; width: 100%;
+    position: absolute; top: 50px; bottom: 45px; background-color: white; width: 100%; padding-left: 220px; height: 50%;
 }
 
 #msgContainer .msgrow {
-    background-color: #808080;
+    background-color: #337ab7;
     color: white;
     font-weight: bold;
     margin: 2px 0px 2px 0px;
@@ -25,7 +25,7 @@ body {
 }
 
 #msgController {
-    position: absolute; bottom: 0px; height: 40px; display: flex; width: 100%;
+    position: fixed; bottom: 0px; height: 40px; display: flex; width: 100%; padding-left: 220px;
 }
 
 #loginPanel {
