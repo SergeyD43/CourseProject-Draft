@@ -83,19 +83,23 @@
     <form method ="post" action="/registration" class="form-signin">
         <h2 class="my-title form-signin-heading">Регистрация</h2>
         <label for="login" class="sr-only"></label>
+        <h2 class="simple-title">длина логина должна быть не менее 6 символов</h2>
         <input name ="login" type="text" id="login" class="form-control" placeholder="логин" required autofocus>
-        <c:if test="${not empty errCode}">
-            <h1 class="error-title">${errCode}</h1>
-        </c:if>
         <label for="password" class="sr-only"></label>
+        <h2 class="simple-title">длина пароля должна быть не менее 8 символов, пароль должен содержать только символы из диапазона A-z0-9</h2>
         <input name ="password" type="text" id="password" class="form-control" placeholder="пароль" required autofocus>
         <label for="name" class="sr-only"></label>
+        <h2 class="simple-title">Имя</h2>
         <input name ="name" type="text" id="name" class="form-control" placeholder="имя" required autofocus>
+        <h2 class="simple-title">Фамилия</h2>
         <label for="surname" class="sr-only"></label>
         <input name ="surname" type="text" id="surname" class="form-control" placeholder="фамилия" required autofocus>
         <%--<label for="password" class="sr-only">Password</label>--%>
         <%--<input name="password" type="password" id="password" class="form-control" placeholder="Password" required>--%>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>
+        <c:if test="${not empty errCode}">
+            <h1 class="error-title">${errCode}</h1>
+        </c:if>
     </form>
 
 </div> <!-- /container -->

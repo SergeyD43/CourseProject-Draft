@@ -59,3 +59,9 @@ body {
   text-align: center;
 }
 
+.simple-title {
+  color: black;
+  font-size: 13px;
+  display: block;
+  text-align: center;
+}
