@@ -1,23 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%--<html>--%>
-<%--<head>--%>
-    <%--<title>Title</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<table>--%>
-    <%--<c:forEach items="${users2}" var="user">--%>
-        <%--<tr>--%>
-            <%--&lt;%&ndash;<td><c:out value="${user.idUser}"></c:out></td>&ndash;%&gt;--%>
-            <%--<td><c:out value="${user.login}"></c:out></td>--%>
-            <%--<td><c:out value="${user.name}"></c:out></td>--%>
-            <%--<td><c:out value="${user.surname}"></c:out></td>--%>
-        <%--</tr>--%>
-    <%--</c:forEach>--%>
-<%--</table>--%>
-<%--</body>--%>
-<%--</html>--%>
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -67,48 +49,15 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="<c:url value="/j_spring_security_logout"/>" >Выход</a></li>
-                <%--<li><a href="#">Dashboard</a></li>--%>
-                <%--<li><a href="#">Settings</a></li>--%>
-                <%--<li><a href="#">Profile</a></li>--%>
-                <%--&lt;%&ndash;<li>&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;<form method="post" action="/adminmain">&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;<input class="btn btn-primary" type="submit" value="выход" name="exit"/>&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;</form>&ndash;%&gt;--%>
-                <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
-            <%--</ul>--%>
-            <%--<form class="navbar-form navbar-right">--%>
-                <%--<input type="text" class="form-control" placeholder="Search...">--%>
-            <%--</form>--%>
         </div>
     </div>
 </nav>
 
 <div class="container-fluid">
     <div class="row">
-        <%--<div class="col-sm-3 col-md-2 sidebar">--%>
-            <%--<ul class="nav nav-sidebar">--%>
-                <%--<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>--%>
-                <%--<li><a href="#">Reports</a></li>--%>
-                <%--<li><a href="#">Analytics</a></li>--%>
-                <%--<li><a href="#">Export</a></li>--%>
-            <%--</ul>--%>
-            <%--<ul class="nav nav-sidebar">--%>
-                <%--<li><a href="">Nav item</a></li>--%>
-                <%--<li><a href="">Nav item again</a></li>--%>
-                <%--<li><a href="">One more nav</a></li>--%>
-                <%--<li><a href="">Another nav item</a></li>--%>
-                <%--<li><a href="">More navigation</a></li>--%>
-            <%--</ul>--%>
-            <%--<ul class="nav nav-sidebar">--%>
-                <%--<li><a href="">Nav item again</a></li>--%>
-                <%--<li><a href="">One more nav</a></li>--%>
-                <%--<li><a href="">Another nav item</a></li>--%>
-            <%--</ul>--%>
-        <%--</div>--%>
+
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Список пользователей</h1>
-
-
 
             <div class="table-responsive">
 

@@ -3,31 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<%--<html>--%>
-<%--<head>--%>
-    <%--<title>Страница авторизации</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<h2>Авторизация</h2>--%>
-<%--<form method="post" action="<c:url value='/j_spring_security_check' />">--%>
-    <%--<input placeholder="логин" type="text" name="login"/>--%>
-    <%--<input placeholder="пароль" type="text" name="password"/>--%>
-    <%--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
-    <%--<input type="submit" value="login"/>--%>
-<%--</form>--%>
-<%--&lt;%&ndash;<form method ="post" action="/login" class="form-signin">&ndash;%&gt;--%>
-    <%--&lt;%&ndash;<h2 class="my-title form-signin-heading">Авторизация</h2>&ndash;%&gt;--%>
-    <%--&lt;%&ndash;<label for="login" class="sr-only">login</label>&ndash;%&gt;--%>
-    <%--&lt;%&ndash;<input name ="login" type="text" id="login" class="form-control" placeholder="логин" required autofocus>&ndash;%&gt;--%>
-    <%--&lt;%&ndash;<label for="password" class="sr-only">Password</label>&ndash;%&gt;--%>
-    <%--&lt;%&ndash;<input name="password" type="password" id="password" class="form-control" placeholder="пароль" required>&ndash;%&gt;--%>
-    <%--&lt;%&ndash;<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>&ndash;%&gt;--%>
-    <%--&lt;%&ndash;<button class="btn btn-lg btn-primary btn-block" type="submit">Вход</button>&ndash;%&gt;--%>
-<%--&lt;%&ndash;</form>&ndash;%&gt;--%>
-
-<%--</body>--%>
-<%--</html>--%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,29 +50,13 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <%--<li><a href="#">Dashboard</a></li>--%>
-                <%--<li><a href="#">Settings</a></li>--%>
-                <%--<li><a href="#">Profile</a></li>--%>
-                <%--<li><form method="post" action="/main">--%>
-                <%--<input class="btn btn-primary" type="submit" value="выход" name="exit"/>--%>
-                <%--</form></li>--%>
             </ul>
-            <%--<form class="navbar-form navbar-right">--%>
-            <%--<input type="text" class="form-control" placeholder="Search...">--%>
-            <%--</form>--%>
+
         </div>
     </div>
 </nav>
 
 <div class="container">
-
-    <%--<h2>Авторизация</h2>--%>
-    <%--<form method="post" action="<c:url value='/j_spring_security_check' />">--%>
-        <%--<input placeholder="логин" type="text" name="login"/>--%>
-        <%--<input placeholder="пароль" type="text" name="password"/>--%>
-        <%--&lt;%&ndash;<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>&ndash;%&gt;--%>
-        <%--<input type="submit" value="login"/>--%>
-    <%--</form>--%>
 
     <form method ="post" action="<c:url value='/j_spring_security_check' />" class="form-signin">
         <h2 class="my-title form-signin-heading">Авторизация</h2>
@@ -111,16 +70,6 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Вход</button>
         <a class="my-title form-signin-heading" href="/registration">Регистрация</a>
     </form>
-
-    <%--<form method ="post" action="<c:url value='/j_spring_security_check' />" class="form-signin">--%>
-        <%--<h2 class="my-title form-signin-heading">Авторизация</h2>--%>
-        <%--<label for="login" class="sr-only">login</label>--%>
-        <%--<input name ="login" type="text" id="login" class="form-control" placeholder="логин" required autofocus>--%>
-        <%--<label for="password" class="sr-only">Password</label>--%>
-        <%--<input name="password" type="password" id="password" class="form-control" placeholder="пароль" required>--%>
-        <%--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
-        <%--<button class="btn btn-lg btn-primary btn-block" type="submit">Вход</button>--%>
-    <%--</form>--%>
 
 </div> <!-- /container -->
 

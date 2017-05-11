@@ -18,10 +18,6 @@ import java.io.IOException;
 import java.util.Collection;
 
 public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
-//    protected Log logger = LogFactory.getLog(this.getClass());
-
-//    @Autowired
-//    private UserDAO userDAO;
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
@@ -37,12 +33,9 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
     protected void handle(HttpServletRequest request,
                           HttpServletResponse response, Authentication authentication)
             throws IOException {
-//        String login = SecurityContextHolder.getContext().getAuthentication().getName();
+
         String targetUrl = determineTargetUrl(authentication);
 
-//        System.out.println(request.getAttribute("login"));
-//        System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
-//        System.out.println(response.);
         if (response.isCommitted()) {
 //            logger.debug("Response has already been committed. Unable to redirect to "
 //                            + targetUrl);
@@ -68,9 +61,6 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
         }
 
         String login = SecurityContextHolder.getContext().getAuthentication().getName();
-        System.out.println(login);
-//        int idByLogin = userDAO.getUserIdByLogin(login);
-//        System.out.println(idByLogin);
 
         if (isUser) {
             return "/main/" + login;

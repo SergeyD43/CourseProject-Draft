@@ -10,19 +10,17 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
+
     private UserDAO userDAO;
+
+    @Autowired
+    public void setUserDAO(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
 
     @Override
     public User auth(String login, String password) {
         User user = userDAO.findUserByLoginAndPassword(login, password);
-//        logger.debug("user: " + user);
-
-//        if (user != null && user.isBlocked()) {
-//            return null;
-//        }
-//        logger.debug("user not blocked");
-
         return user;
     }
 
@@ -49,6 +47,4 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    public void setUserDAO(String userDAO) {
-    }
 }

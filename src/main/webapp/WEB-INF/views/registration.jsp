@@ -1,21 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%--<html>--%>
-<%--<head>--%>
-    <%--<title>Регистрация</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<h2>Регистрация</h2>--%>
-<%--<form method="post" action="/registration">--%>
-    <%--<input placeholder="логин" type="text" name="login"/>--%>
-    <%--<input placeholder="пароль" type="text" name="password"/>--%>
-    <%--<input placeholder="имя" type="text" name="name"/>--%>
-    <%--<input placeholder="фамилия" type="text" name="surname"/>--%>
-    <%--&lt;%&ndash;<input placeholder="возраст" type="text" name="age"/>&ndash;%&gt;--%>
-    <%--<input type="submit" value="registration"/>--%>
-<%--</form>--%>
-<%--</body>--%>
-<%--</html>--%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,16 +48,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <%--<li><a href="#">Dashboard</a></li>--%>
-                <%--<li><a href="#">Settings</a></li>--%>
-                <%--<li><a href="#">Profile</a></li>--%>
-                <%--<li><form method="post" action="/main">--%>
-                    <%--<input class="btn btn-primary" type="submit" value="выход" name="exit"/>--%>
-                <%--</form></li>--%>
             </ul>
-            <%--<form class="navbar-form navbar-right">--%>
-            <%--<input type="text" class="form-control" placeholder="Search...">--%>
-            <%--</form>--%>
         </div>
     </div>
 </nav>

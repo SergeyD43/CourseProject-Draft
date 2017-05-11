@@ -10,12 +10,18 @@ import java.util.List;
 @Service
 public class RoomServiceImpl implements RoomService {
 
-    @Autowired
+
     private RoomDAO roomDAO;
+
+    @Autowired
+    public void setRoomDAO(RoomDAO roomDAO) {
+        this.roomDAO = roomDAO;
+    }
 
     @Override
     public List<Room> getAllRooms() {
         List<Room> rooms = roomDAO.selectAllRooms();
         return rooms;
     }
+
 }

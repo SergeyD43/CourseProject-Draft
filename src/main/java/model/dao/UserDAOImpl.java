@@ -14,8 +14,13 @@ import java.util.List;
 @Repository
 public class UserDAOImpl implements UserDAO {
 
-    @Autowired
+
     private BCryptPasswordEncoder encoder;
+
+    @Autowired
+    public void setEncoder(BCryptPasswordEncoder encoder) {
+        this.encoder = encoder;
+    }
 
     public int getUserIdByLogin(String login){
 
@@ -27,7 +32,6 @@ public class UserDAOImpl implements UserDAO {
             statement = connection
                     .prepareStatement( "SELECT id_user FROM users WHERE login = ?");
             statement.setString(1, login);
-
 
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -47,9 +51,6 @@ public class UserDAOImpl implements UserDAO {
         Connection connection = SingletonDBConnection.getInstance().connect();
         PreparedStatement statement = null;
 
-//        String spassword = encoder.encode(password);
-//        System.out.println(spassword);
-
         try {
             statement = connection
                     .prepareStatement( "SELECT * FROM users WHERE login = ? AND password = ?");
@@ -64,7 +65,6 @@ public class UserDAOImpl implements UserDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
 
         return user;
     }
@@ -87,13 +87,7 @@ public class UserDAOImpl implements UserDAO {
             admin = false;
         }
 
-//        String password = encoder.encode(resultSet.getString("password"));
-//        System.out.println("password " + password);
-//
-//        String p = encoder.encode("Java");
-//        System.out.printf(p);
         String password = resultSet.getString("password");
-        System.out.println("password " + password);
 
         return new User(resultSet.getInt("id_user"),
                 resultSet.getString("login"),
@@ -110,13 +104,7 @@ public class UserDAOImpl implements UserDAO {
     public void insertUser(String login, String password, String name, String surname) throws Exception {
         User user = null;
         Connection connection = SingletonDBConnection.getInstance().connect();
-
-//        String spassword = encoder.encode(password);
-//        System.out.println("khjk");
-//        System.out.println(encoder.encode("code"));
         String encode = encoder.encode(password);
-
-
         try {
             PreparedStatement preparedStatement =
                     connection.prepareStatement("insert into users(login, password, " +
@@ -200,4 +188,6 @@ public class UserDAOImpl implements UserDAO {
 
         return user;
     }
+
+
 }
