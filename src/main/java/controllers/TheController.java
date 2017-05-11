@@ -93,7 +93,8 @@ public class TheController {
         }
 
         if(exception){
-            modelAndView = new ModelAndView("redirect:/loginerror");
+            throw new CustomGenericException("данный логин уже существет!", "");
+/*            modelAndView = new ModelAndView("redirect:/loginerror");*/
         } else {
             User user = userService.getUserByLogin(login);
             String userLogin = user.getLogin();
