@@ -1,7 +1,6 @@
 package main.java.model.dao;
 
-import entity.UsersEntity;
-import main.java.model.pojo.User;
+import main.java.model.entity.UsersEntity;
 
 import java.util.List;
 

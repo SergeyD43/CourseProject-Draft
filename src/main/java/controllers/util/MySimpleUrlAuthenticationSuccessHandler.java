@@ -1,4 +1,4 @@
-package main.java.controllers;
+package main.java.controllers.util;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;

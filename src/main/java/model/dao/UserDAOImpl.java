@@ -1,7 +1,7 @@
 package main.java.model.dao;
 
-import entity.UsersEntity;
-import main.java.model.HibernateSessionFactory;
+import main.java.model.util.HibernateSessionFactory;
+import main.java.model.entity.UsersEntity;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;

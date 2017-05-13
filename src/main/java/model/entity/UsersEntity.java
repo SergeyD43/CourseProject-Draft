@@ -1,10 +1,7 @@
-package entity;
+package main.java.model.entity;
 
 import javax.persistence.*;
 
-/**
- * Created by Admin on 12.05.2017.
- */
 @Entity
 @Table(name = "users", schema = "school2", catalog = "")
 public class UsersEntity {

@@ -1,4 +1,4 @@
-package main.java.controllers;
+package main.java.controllers.exceptions;
 
 public class CustomGenericException extends RuntimeException {
     private String errCode;

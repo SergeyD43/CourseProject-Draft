@@ -1,13 +1,16 @@
-package main.java.controllers;
+package main.java.controllers.controller;
 
 
-import main.java.model.pojo.User;
+import main.java.controllers.exceptions.CustomGenericException;
+import main.java.controllers.util.Validator;
 import main.java.services.UserService;
+import main.java.services.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 import java.util.List;
 
 @Controller
@@ -55,8 +58,8 @@ public class TheController {
         if(exception){
             throw new CustomGenericException("данный логин уже существет!", "");
         } else {
-            User user = userService.getUserByLogin(login);
-            String userLogin = user.getLogin();
+            UserDTO userDTO = userService.getUserByLogin(login);
+            String userLogin = userDTO.getLogin();
             modelAndView = new ModelAndView("redirect:/main/" + userLogin);
         }
 
@@ -66,18 +69,18 @@ public class TheController {
     @RequestMapping(value = "/adminmain")
     public ModelAndView showAdminPanel(){
         ModelAndView modelAndView = new ModelAndView("/adminmain");
-        List<User> users = userService.getAllUsers();
+        List<UserDTO> userDTOs = userService.getAllUsers();
 
-        modelAndView.addObject("users2", users);
+        modelAndView.addObject("users2", userDTOs);
         return modelAndView;
     }
 
     @RequestMapping(value = "/main/{login}")
     public ModelAndView showMainPanel(@PathVariable String login){
         ModelAndView modelAndView = new ModelAndView("/main");
-        User user = userService.getUserByLogin(login);
-        modelAndView.addObject("nameUser", user.getName() + " " + user.getSurname());
-        modelAndView.addObject("room", user.getIdRoom());
+        UserDTO userDTO = userService.getUserByLogin(login);
+        modelAndView.addObject("nameUser", userDTO.getName() + " " + userDTO.getSurname());
+        modelAndView.addObject("room", userDTO.getIdRoom());
         return modelAndView;
     }
 

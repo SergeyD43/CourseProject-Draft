@@ -1,4 +1,6 @@
-package main.java.controllers;
+package main.java.controllers.util;
+
+import main.java.controllers.exceptions.CustomGenericException;
 
 public class Validator {
     public static void proverka(String login, String password, String name, String surname) {

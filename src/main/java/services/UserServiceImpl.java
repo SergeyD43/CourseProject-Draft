@@ -1,11 +1,11 @@
 package main.java.services;
 
-import entity.UsersEntity;
+import main.java.model.entity.UsersEntity;
 import ma.glasnost.orika.BoundMapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
 import main.java.model.dao.UserDAO;
-import main.java.model.pojo.User;
+import main.java.services.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,15 +28,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getAllUsers() {
+    public List<UserDTO> getAllUsers() {
         List<UsersEntity> users = userDAO.selectAllUsers();
 
-        List<User> usersDTO = new ArrayList<>();
+        List<UserDTO> usersDTO = new ArrayList<>();
 
         MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
 
-        BoundMapperFacade<UsersEntity, User>
-                boundMapper = mapperFactory.getMapperFacade(UsersEntity.class, User.class);
+        BoundMapperFacade<UsersEntity, UserDTO>
+                boundMapper = mapperFactory.getMapperFacade(UsersEntity.class, UserDTO.class);
 
         for(UsersEntity usersEntity:users){
             usersDTO.add(boundMapper.map(usersEntity));
@@ -46,15 +46,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByLogin(String login) {
+    public UserDTO getUserByLogin(String login) {
         UsersEntity user = userDAO.selectUserByLogin(login);
 
-        User userDTO;
+        UserDTO userDTO;
 
         MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
 
-        BoundMapperFacade<UsersEntity, User>
-                boundMapper = mapperFactory.getMapperFacade(UsersEntity.class, User.class);
+        BoundMapperFacade<UsersEntity, UserDTO>
+                boundMapper = mapperFactory.getMapperFacade(UsersEntity.class, UserDTO.class);
 
         userDTO = boundMapper.map(user);
 

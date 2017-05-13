@@ -72,11 +72,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${users2}" var="user">
+                    <c:forEach items="${users2}" var="userDTO">
                         <tr>
-                            <td>${user.login}</td>
-                            <td>${user.name}</td>
-                            <td>${user.surname}</td>
+                            <td>${userDTO.login}</td>
+                            <td>${userDTO.name}</td>
+                            <td>${userDTO.surname}</td>
                         </tr>
                     </c:forEach>
                     </tbody>

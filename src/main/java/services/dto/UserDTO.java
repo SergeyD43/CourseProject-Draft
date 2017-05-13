@@ -1,6 +1,6 @@
-package main.java.model.pojo;
+package main.java.services.dto;
 
-public class User {
+public class UserDTO {
     private int idUser;
     private String login;
     private String password;
@@ -9,7 +9,7 @@ public class User {
     private String surname;
     private int idRoom;
 
-    public User(int idUser, String login, String password, String role, String name, String surname, int idRoom) {
+    public UserDTO(int idUser, String login, String password, String role, String name, String surname, int idRoom) {
         this.idUser = idUser;
         this.login = login;
         this.password = password;
