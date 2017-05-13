@@ -91,7 +91,6 @@ public class TheController {
         ModelAndView model = new ModelAndView("registration");
         model.addObject("errCode", ex.getErrCode());
         model.addObject("errMsg", ex.getErrMsg());
-
         return model;
     }
 }
